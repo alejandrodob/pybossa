@@ -25,6 +25,11 @@ class TestGoogle:
         model.rebuild_db()
         Fixtures.create()
 
+    @classmethod
+    def teardown_class(cls):
+        model.rebuild_db()
+        redis_flushall()
+
     def test_manage_user(self):
         """Test GOOGLE manage_user works."""
         with self.app.test_request_context('/'):

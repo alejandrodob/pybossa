@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with PyBossa.  If not, see <http://www.gnu.org/licenses/>.
 
-from base import model, db, web, Fixtures
+from base import model, db, web, Fixtures, redis_flushall
 from helper.user import User
 
 
@@ -36,6 +36,7 @@ class Helper(object):
     @classmethod
     def teardown_class(cls):
         model.rebuild_db()
+        redis_flushall
 
     def html_title(self, title=None):
         """Helper function to create an HTML title"""

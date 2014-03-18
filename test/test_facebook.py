@@ -28,6 +28,11 @@ class TestFacebook:
     def tearDown(self):
         db.session.remove()
 
+    @classmethod
+    def teardown_class(cls):
+        model.rebuild_db()
+        redis_flushall()
+
     def test_manage_user(self):
         """Test FACEBOOK manage_user works."""
         with self.app.test_request_context('/'):
